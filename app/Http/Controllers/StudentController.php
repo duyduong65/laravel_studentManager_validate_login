@@ -50,13 +50,10 @@ class StudentController extends Controller
         return view('formEdit', compact('student'));
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        $this->student->name = $request->name;
-        $this->student->age = $request->age;
-        $this->student->class = $request->class;
-        $this->student->province = $request->province;
-        $this->student->save();
+        $student = $this->student->findOrFail($id);
+        $student->update($request->all());
         return redirect()->route('students.index');
     }
 }
