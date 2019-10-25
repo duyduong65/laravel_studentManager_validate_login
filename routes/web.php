@@ -30,6 +30,7 @@ Route::prefix("students")->group(function () {
     Route::post('create','StudentController@create')->name('students.create');
     Route::get('edit/{id}','StudentController@formEdit')->name('students.edit');
     Route::post('edit/{id}','StudentController@edit')->name('students.edit');
+    Route::get('search','StudentController@search')->name('students.search');
 });
 
 

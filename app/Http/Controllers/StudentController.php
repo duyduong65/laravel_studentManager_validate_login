@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -17,7 +19,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = $this->student->all();
+        $students = $this->student->paginate(5);
         return view('list_student', compact("students"));
     }
 
@@ -35,12 +37,21 @@ class StudentController extends Controller
 
     public function create(Request $request)
     {
+        $image = $request->image;
+        $destinationPath = 'public/upload';
+        $fileName = date('ymdhisa') . "." . $image->getClientOriginalExtension();
+        $image->storeAs($destinationPath, $fileName);
+        $insert['image'] = "$fileName";
+
         $this->student->create([
             'name' => $request->name,
             'age' => $request->age,
             'class' => $request->class,
-            'province' => $request->province
+            'province' => $request->province,
+            'image' => $fileName
         ]);
+
+
         return redirect()->route('students.index');
     }
 
@@ -56,4 +67,14 @@ class StudentController extends Controller
         $student->update($request->all());
         return redirect()->route('students.index');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $dataSearch = DB::table('students')->where('name', "LIKE", "%$search%")
+            ->orWhere('province', "LIKE", "%$search%")
+            ->paginate(5);
+        return view('search', compact('dataSearch'));
+    }
+
 }

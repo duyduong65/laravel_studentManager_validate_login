@@ -10,6 +10,6 @@ class Student extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id', 'name', 'age', 'class', 'province'
+        'id', 'name', 'age', 'class', 'province','image'
     ];
 }
