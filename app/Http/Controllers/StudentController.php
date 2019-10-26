@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Image;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
@@ -26,7 +26,11 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = $this->student->findOrFail($id);
+        if (file_exists(storage_path("/app/public/upload/$student->image"))){
+            File::delete(storage_path("/app/public/upload/$student->image"));
+        }
         $student->delete();
+
         return redirect()->route('students.index');
     }
 

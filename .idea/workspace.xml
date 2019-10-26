@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4fcf774-ecdc-48b3-a441-337d62c459a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_25_074930_create_images_table.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,6 +157,7 @@
       <workItem from="1571890718865" duration="13005000" />
       <workItem from="1571968390922" duration="14275000" />
       <workItem from="1572065498251" duration="1287000" />
+      <workItem from="1572094929421" duration="2376000" />
     </task>
     <task id="LOCAL-00001" summary="ad method search">
       <created>1571999281815</created>
